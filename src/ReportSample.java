@@ -1,27 +1,36 @@
-/* Sample file covering hw2 */
+/* Sample file for hw2. It may or may not compile. */
 
 import java.io.File;
 import java.io.PrintStream;
 import java.util.Scanner;
+import java.util.Date;
 
 public class ReportSample {
 
-  // takes the price and discount to compute the price with discount applied
+  // This method takes the price and discount as inputs and compute the price with discount applied
   static double itemPriceWDiscount(double p, int d) {
     double d2 = d / 10; // TODO: double check this later for accuracy
     return p * d2;
   }
 
-  // takes the subtotal value and computes the tax amount
+  // This method takes the takes the subtotal value as input and computes the tax amount
   static double taxCalc(int subtotal) {
     return subtotal * (8.875 / 100.0); // TODO: double check this later for accuracy
   }
 
-  // this method prints the report
+  // This method takes the string filename prints the report to that file
   static void printReport(String filename, int value) throws Exception {
     PrintStream ps = new PrintStream(filename);
     System.out.println(value + " is the input argument");
     // do something
+  }
+
+  // This method takes a string and convert string to Date type
+  static Date stringToDate(String d) {
+    /* You can...
+       1. convert string to Date directly by specifying the parsing formatting
+       2. convert string to number, i.e. split with - delimiter then convert each element to date
+    */
   }
 
   public static void main(String[] args) throws Exception {
@@ -42,10 +51,10 @@ public class ReportSample {
     while(in.hasNext()){
 
       // for each record in the data file, capture fields
-      String date = in.next();
+      Date date = stringToDate(in.next());
       String sku = in.next();
       double price = in.nextDouble();
-      int discount= in.nextInt();
+      int discount = in.nextInt();
 
       // compute price with discount applied 
       double priceWD = itemPriceWDiscount(price+price, discount);
